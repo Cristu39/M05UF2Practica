@@ -1,4 +1,15 @@
-package dam.m03.uf5.grupoX.tpv;
+﻿/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dam.m05.uf5.practica;
+
+/**
+ *
+ * @author Cristian
+ */
+
 
 /**
  * Clase contenedora que representa a un articulo adquirido por un cliente y 
@@ -27,6 +38,7 @@ public class ArticuloCompra {
      * @param producto el Producto comprado
      */
     public ArticuloCompra(Producto producto){
+        this.producto = producto;
     }
 
     /**
@@ -35,12 +47,22 @@ public class ArticuloCompra {
      * @param peso el peso en Kg
      */
     public ArticuloCompra(Producto producto, double peso){
+        this.producto = producto;
+        this.peso = peso;
     }
     
     /**
      * Añadir los getters necesarios
      */
-    
+    public Producto getProducto (){
+        return producto;
+    }
+    public double getPeso(){
+        return peso;
+    }
+    public double getTotalConIVA(){
+        return totalConIVA;
+    }
 
     /**
      * Devuelve un String representando los datos principales del artículo en 
@@ -49,5 +71,6 @@ public class ArticuloCompra {
      * "Descripción corta <TAB> Peso(o <TAB>) <TAB> Precio unitario con IVA <TAB> Total con IVA"
      */
     public String toString(){
+        return producto.getDescripcionCorta()+"\t"+getPeso()+"\t"+producto.getPrecioConIVA()+"\t"+getTotalConIVA();
     }
 }
