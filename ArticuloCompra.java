@@ -1,18 +1,7 @@
-﻿/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package dam.m05.uf5.practica;
+package dam.m03.uf5.grupo8.tpv;
 
 /**
- *
- * @author Cristian
- */
-
-
-/**
- * Clase contenedora que representa a un articulo adquirido por un cliente y 
+ * Clase contenedora que representa a un articulo adquirido por un cliente y
  * que se añadirá a la cesta de la compra.
  * Se usa básicamente para poder almacenar el peso en caso de que un Producto
  * sea a granel.
@@ -32,7 +21,7 @@ public class ArticuloCompra {
      * por el peso si es a granel
      */
     private double totalConIVA;
-    
+
     /**
      * Constructor para Productos que no sean a granel
      * @param producto el Producto comprado
@@ -50,7 +39,7 @@ public class ArticuloCompra {
         this.producto = producto;
         this.peso = peso;
     }
-    
+
     /**
      * Añadir los getters necesarios
      */
@@ -65,7 +54,7 @@ public class ArticuloCompra {
     }
 
     /**
-     * Devuelve un String representando los datos principales del artículo en 
+     * Devuelve un String representando los datos principales del artículo en
      * una sóla línea, separados por tabuladores.
      * @return un objeto String, con el formato siguiente:
      * "Descripción corta <TAB> Peso(o <TAB>) <TAB> Precio unitario con IVA <TAB> Total con IVA"

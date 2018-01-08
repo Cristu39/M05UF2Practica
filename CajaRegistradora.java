@@ -1,4 +1,4 @@
-package dam.m03.uf5.grupoX.tpv;
+package dam.m03.uf5.grupo8.tpv;
 
 import java.util.*;
 
@@ -20,25 +20,25 @@ public class CajaRegistradora {
      * de cliente
      */
     private COLECCION clientes;
-    
+
     /**
      * Devuelve una nueva instancia, inicializada con los datos proporcionados.
      * Inicializa también el resto de atributos.
      * @param cif
      * @param telefono
      * @param nombreEmpresa
-     * @param direccion 
+     * @param direccion
      */
     public CajaRegistradora(String cif, String telefono, String nombreEmpresa, String direccion){
     }
     /**
      * Método principal que arranca la ejecución de la CajaRegistradora.
-     * Muestra al usuario cuatro opciones: nueva compra, listar compras, alta 
+     * Muestra al usuario cuatro opciones: nueva compra, listar compras, alta
      * cliente y salir. Mientras el usuario no elija salir, procesará las
      * opciones seleccionadas.
      * Si se elige una nueva compra, leerá los códigos de barras de los
      * artículos hasta que se finalice introduciendo una "F". Si el artículo es
-     * un Producto a granel, pedirá el peso. En caso de error de introducción 
+     * un Producto a granel, pedirá el peso. En caso de error de introducción
      * de cualquiera de los datos, mostrará un mensaje de error y pasará a pedir
      * de nuevo el código de barras.
      * Al finalizar una compra, mostrará el ticket para el usuario. Dicho ticket
@@ -49,12 +49,12 @@ public class CajaRegistradora {
      */
     public void inicia(){
     }
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
 }

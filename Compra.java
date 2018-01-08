@@ -1,4 +1,4 @@
-package dam.m03.uf5.grupoX.tpv;
+package dam.m03.uf5.grupo8.tpv;
 
 import java.util.*;
 import java.time.*;
@@ -22,35 +22,35 @@ public class Compra {
     private double base;
     /** cliente asociado a la compra */
     private Cliente cliente;
-    
+
     /**
      * Devuelve una instancia de Compra, inicializando sus atributos
-     * @param cliente 
+     * @param cliente
      */
     public Compra(Cliente cliente){
     }
-    
+
     /**
      * Añade un artículo escaneado a la cesta
      * @param articulo el ArticuloCompra a añadir
      */
     public void ponArticulo(ArticuloCompra articulo){
     }
-    
+
     /** Devuelve una representación de la fecha de la compra
-     * 
+     *
      * @return un String con el formato: dia/mes/año hora:minutos:segundos
      */
     public String getFecha(){
     }
-    
+
     /**
-     * 
+     *
      * @return el precio total de la compra, con el IVA incluido
      */
     public double getTotal(){
     }
-    
+
     /**
      * Devuelve un resumen de una Compra, útil a la hora de mostrar un listado
      * de todas las compras realizadas.
@@ -58,7 +58,7 @@ public class Compra {
      */
     public String resumen(){
     }
-    
+
     /**
      * Método que genera un ticket con el listado de artículos adquiridos.
      * Hace uso del método toString de ArticuloCompra para mostrar cada línea.

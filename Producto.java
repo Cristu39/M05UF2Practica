@@ -1,10 +1,4 @@
-﻿/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package dam.m05.uf5.practica;
-
+package dam.m03.uf5.grupo8.tpv;
 
 import java.util.regex.*;
 
@@ -27,7 +21,7 @@ public class Producto {
     private int IVA;
     /** Indica si es un producto a granel y por lo tanto pesable */
     private boolean granel;
-    
+
     /**
      * Devuelve un nuevo objeto Producto con los parámetros proporcionados
      * @param codigo código de barras
@@ -45,41 +39,41 @@ public class Producto {
         this.IVA=IVA;
         this.granel=granel;
     }
-    
+
     /*
         Añadir los getters necesarios para los atributos
-        
+
     */
     public String getCodigo(){ return codigo; }
     public String getDescripcion(){ return descripcion; }
     public double getPrecioSinIVA(){ return precioSinIVA; }
     public boolean getGranel(){ return granel; }
-    
+
     /*
         Métodos adicionales
     */
-    
+
     /**
-     * 
+     *
      * @return el precio del Producto aplicando el IVA
      */
     public double getPrecioConIVA(){
-        if (granel) 
+        if (granel)
             return precioSinIVA*1.10;
         else{
             return precioSinIVA*1.21;
         }
     }
-    
+
     /**
-     * 
-     * @return los primeros 15 caracteres de la descripción del producto, útil 
+     *
+     * @return los primeros 15 caracteres de la descripción del producto, útil
      * para la generación de tickets
      */
     public String getDescripcionCorta(){
         return descripcion.substring(0,15);
     }
-    
+
     /**
      * Verifica si un código es o no correcto. De momento sólo valida que hayan
      * 13 caracteres y los dos primeros sean 84.
@@ -88,7 +82,7 @@ public class Producto {
      */
     public static boolean esCodigoCorrecto(String codigo){
         if (codigo.length()==13) {
-            if (codigo.matches(pattern)) 
+            if (codigo.matches(pattern))
                 return true;
             else{
                 return false;
@@ -98,5 +92,5 @@ public class Producto {
             return false;
         }
     }
-    
+
 }
