@@ -26,8 +26,9 @@ public class ArticuloCompra {
      * Constructor para Productos que no sean a granel
      * @param producto el Producto comprado
      */
-    public ArticuloCompra(Producto producto){
+    public ArticuloCompra(Producto producto) {
         this.producto = producto;
+        totalConIVA = producto.getPrecioConIVA();
     }
 
     /**
@@ -35,23 +36,18 @@ public class ArticuloCompra {
      * @param producto el Producto comprado
      * @param peso el peso en Kg
      */
-    public ArticuloCompra(Producto producto, double peso){
+    public ArticuloCompra(Producto producto, double peso) {
         this.producto = producto;
         this.peso = peso;
+        totalConIVA = producto.getPrecioConIVA() * peso;
     }
 
     /**
      * Añadir los getters necesarios
      */
-    public Producto getProducto (){
-        return producto;
-    }
-    public double getPeso(){
-        return peso;
-    }
-    public double getTotalConIVA(){
-        return totalConIVA;
-    }
+    public Producto getProducto() { return producto; }
+    public double getPeso() { return peso; }
+    public double getTotalConIVA() { return totalConIVA; }
 
     /**
      * Devuelve un String representando los datos principales del artículo en
@@ -59,7 +55,11 @@ public class ArticuloCompra {
      * @return un objeto String, con el formato siguiente:
      * "Descripción corta <TAB> Peso(o <TAB>) <TAB> Precio unitario con IVA <TAB> Total con IVA"
      */
-    public String toString(){
-        return producto.getDescripcionCorta()+"\t"+getPeso()+"\t"+producto.getPrecioConIVA()+"\t"+getTotalConIVA();
+    public String toString() {
+        if (producto.isGranel())
+            return String.format("%s\t%d\t%d\t%d", producto.getDescripcionCorta()
+                                , peso, producto.getPrecioConIVA(), totalConIVA);
+        return String.format("%s\t\t%d\t%d", producto.getDescripcionCorta()
+                            , producto.getPrecioConIVA(), totalConIVA);
     }
 }

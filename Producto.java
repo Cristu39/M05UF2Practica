@@ -1,7 +1,5 @@
 package dam.m03.uf5.grupo8.tpv;
 
-import java.util.regex.*;
-
 /**
  * Clase que representa a un producto de un comercio, con sus principales
  * atributos, métodos para acceder a éstos y un método estático para validar
@@ -10,7 +8,6 @@ import java.util.regex.*;
  */
 
 public class Producto {
-    private static String pattern= "^[8][4][0-9{11}]";
     /** Código de barras del producto */
     private String codigo;
     /** Text descriptivo del producto */
@@ -33,21 +30,20 @@ public class Producto {
      * formato válido
      */
     public Producto(String codigo, String descripcion, double precioSinIVA, int IVA, boolean granel) throws ProductoException{
-        this.codigo=codigo;
-        this.descripcion=descripcion;
-        this.precioSinIVA=precioSinIVA;
-        this.IVA=IVA;
-        this.granel=granel;
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.precioSinIVA = precioSinIVA;
+        this.IVA = IVA;
+        this.granel = granel;
     }
 
     /*
         Añadir los getters necesarios para los atributos
-
     */
-    public String getCodigo(){ return codigo; }
-    public String getDescripcion(){ return descripcion; }
-    public double getPrecioSinIVA(){ return precioSinIVA; }
-    public boolean getGranel(){ return granel; }
+    public String getCodigo() { return codigo; }
+    public String getDescripcion() { return descripcion; }
+    public double getPrecioSinIVA() { return precioSinIVA; }
+    public boolean isGranel() { return granel; }
 
     /*
         Métodos adicionales
@@ -57,12 +53,8 @@ public class Producto {
      *
      * @return el precio del Producto aplicando el IVA
      */
-    public double getPrecioConIVA(){
-        if (granel)
-            return precioSinIVA*1.10;
-        else{
-            return precioSinIVA*1.21;
-        }
+    public double getPrecioConIVA() {
+        return precioSinIVA * IVA / 100;
     }
 
     /**
@@ -71,7 +63,7 @@ public class Producto {
      * para la generación de tickets
      */
     public String getDescripcionCorta(){
-        return descripcion.substring(0,15);
+        return descripcion.substring(0, 15);
     }
 
     /**
@@ -80,17 +72,7 @@ public class Producto {
      * @param codigo el código de barras a validar
      * @return true si el formato del código es válido
      */
-    public static boolean esCodigoCorrecto(String codigo){
-        if (codigo.length()==13) {
-            if (codigo.matches(pattern))
-                return true;
-            else{
-                return false;
-            }
-        }
-        else{
-            return false;
-        }
+    public static boolean esCodigoCorrecto(String codigo) {
+        return codigo.matches("^84[0-9]{11}$");
     }
-
 }
