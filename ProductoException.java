@@ -5,6 +5,7 @@ package dam.m03.uf5.grupo8.tpv;
  * de la aplicación de Caja Registradora
  * @author Juan
  */
+@SuppressWarnings("serial")
 public class ProductoException extends Exception {
     public ProductoException(String msg) {
         super(msg);

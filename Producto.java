@@ -29,7 +29,8 @@ public class Producto {
      * @throws ProductoException en caso de que el código de barras no tenga un
      * formato válido
      */
-    public Producto(String codigo, String descripcion, double precioSinIVA, int IVA, boolean granel) throws ProductoException{
+    public Producto(String codigo, String descripcion, double precioSinIVA
+            , int IVA, boolean granel) throws ProductoException {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precioSinIVA = precioSinIVA;
@@ -62,7 +63,7 @@ public class Producto {
      * @return los primeros 15 caracteres de la descripción del producto, útil
      * para la generación de tickets
      */
-    public String getDescripcionCorta(){
+    public String getDescripcionCorta() {
         return descripcion.substring(0, 15);
     }
 
