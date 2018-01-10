@@ -54,7 +54,33 @@ public class CajaRegistradora {
      */
     public void inicia() {
         Console console = System.console();
-        String op = console.readLine("(1) Nueva compra, (2) Listar Compras, (3) Alta cliente, (4) Salir: ");
+        String op;
+        console.printf("Hola!\n");
+        do { 
+            op = console.readLine("(1) Nueva compra, (2) Listar Compras, (3) Alta cliente, (4) Salir: ");
+            if (op.equals("1"))
+                nuevaCompra(console);
+            else if (op.equals("2"))
+                listarCompras(console);
+            else if (op.equals("3"))
+                altaCliente(console);
+            else if (op.equals("4"))
+                console.printf("Bye!\n");
+            else
+                console.printf("Opcion no valida\n");
+        } while (!op.equals("4"));
+    }
+
+    public void nuevaCompra(Console console) {
+        console.printf("[+] Nueva compra\n");
+    }
+
+    public void listarCompras(Console console) {
+        console.printf("[+] Listar compras\n");
+    }
+
+    public void altaCliente(Console console) {
+        console.printf("[+] Alta cliente\n");
     }
 
     /**
