@@ -1,4 +1,4 @@
-package dam.m03.uf5.grupo8.tpv;
+// package dam.m03.uf5.grupo8.tpv;
 
 import java.util.regex.Pattern;
 
@@ -16,6 +16,8 @@ public class Cliente {
     private String nif;
     /** codigo de cliente */
     private int codigoCliente;
+    // Añado una variable estatica para poder asignar codigoCliente de manera incremental
+    private static int numClientes;
 
     /**
      * Crea una nueva instancia, inicializada con los datos proporcionados.
@@ -36,13 +38,15 @@ public class Cliente {
         this.nombre = (nombre.matches(alfaAndSpace)) ? nombre:"";
         this.apellidos = (apellidos.matches(alfaAndSpace)) ? apellidos:"";
         this.nif = (nif.matches("^[0-9]{8}[A-Z]$") && nifValido(nif)) ? nif:"";
+        codigoCliente = ++numClientes;
         if (nombre.isEmpty() || apellidos.isEmpty() || nif.isEmpty())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Nombre, apellidos o nif mal formados");
     }
 
     /* Añadir los getters necesarios para cada atributo de un Cliente
        ! No añadir setters !
     */
+    public int getCodigoCliente() { return codigoCliente; }
 
     /**
      *

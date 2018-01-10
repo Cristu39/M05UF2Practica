@@ -1,4 +1,4 @@
-package dam.m03.uf5.grupo8.tpv;
+// package dam.m03.uf5.grupo8.tpv;
 
 /**
  * Clase que representa a un producto de un comercio, con sus principales

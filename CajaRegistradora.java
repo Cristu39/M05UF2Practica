@@ -1,4 +1,4 @@
-package dam.m03.uf5.grupo8.tpv;
+// package dam.m03.uf5.grupo8.tpv;
 
 import java.util.*;
 import java.io.Console;
@@ -8,7 +8,6 @@ import java.io.Console;
  * @author jmartin
  */
 public class CajaRegistradora {
-
     private String cif;
     private String nombreEmpresa;
     private String telefono;
@@ -30,7 +29,8 @@ public class CajaRegistradora {
      * @param nombreEmpresa
      * @param direccion
      */
-    public CajaRegistradora(String cif, String telefono, String nombreEmpresa, String direccion) {
+    public CajaRegistradora(String cif, String telefono, String nombreEmpresa,
+            String direccion) {
         this.cif = cif;
         this.telefono = telefono;
         this.nombreEmpresa = nombreEmpresa;
@@ -54,13 +54,14 @@ public class CajaRegistradora {
      */
     public void inicia() {
         Console console = System.console();
+        String op = console.readLine("(1) Nueva compra, (2) Listar Compras, (3) Alta cliente, (4) Salir: ");
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        CajaRegistradora t = new CajaRegistradora("a", "a", "a", "a");
+        t.inicia();
     }
-
 }

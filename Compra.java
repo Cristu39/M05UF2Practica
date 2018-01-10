@@ -1,7 +1,8 @@
-package dam.m03.uf5.grupo8.tpv;
+// package dam.m03.uf5.grupo8.tpv;
 
-import java.util.*;
-import java.time.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -13,7 +14,7 @@ public class Compra {
 
     /** COLECCION donde se iran añadiendo los ArticuloCompra escaneados
      */
-    private COLECCION cesta;
+    private List<ArticuloCompra> cesta = new ArrayList<>();
     /** fecha y hora de la compra */
     private LocalDateTime fechaHora;
     /** el precio total (con IVA) */
@@ -27,36 +28,44 @@ public class Compra {
      * Devuelve una instancia de Compra, inicializando sus atributos
      * @param cliente
      */
-    public Compra(Cliente cliente){
+    public Compra(Cliente cliente) {
+        this.cliente = cliente;
+        fechaHora = LocalDateTime.now();
+        base = 0;
+        total = 0;
     }
 
     /**
      * Añade un artículo escaneado a la cesta
      * @param articulo el ArticuloCompra a añadir
      */
-    public void ponArticulo(ArticuloCompra articulo){
+    public void ponArticulo(ArticuloCompra articulo) {
+        base += articulo.getProducto().getPrecioSinIVA();
+        total += articulo.getTotalConIVA();
+        cesta.add(articulo);
     }
 
     /** Devuelve una representación de la fecha de la compra
      *
      * @return un String con el formato: dia/mes/año hora:minutos:segundos
      */
-    public String getFecha(){
+    public String getFecha() {
+        return fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
     }
 
     /**
      *
      * @return el precio total de la compra, con el IVA incluido
      */
-    public double getTotal(){
-    }
+    public double getTotal() { return total; }
 
     /**
      * Devuelve un resumen de una Compra, útil a la hora de mostrar un listado
      * de todas las compras realizadas.
      * @return un String con el formato: "Fecha: la_fecha, Importe (con IVA): el_importe"
      */
-    public String resumen(){
+    public String resumen() {
+        return String.format("Fecha: %s, Importe (con IVA): %d", getFecha(), getTotal());
     }
 
     /**
@@ -64,6 +73,16 @@ public class Compra {
      * Hace uso del método toString de ArticuloCompra para mostrar cada línea.
      * @return un String con el ticket de compra
      */
-    public String generaTicket(){
+    public String generaTicket() {
+        String articulos = "";
+        for (int i=0; i<cesta.size(); i++)
+            articulos += i + "\t" + cesta.get(i).toString() + "\n";
+        return "---------------------------\n"
+               + "#\tDESCRIPCIÓN\tPESO\tPVP\tTOTAL\n"
+               + articulos
+               + "---------------------------\n"
+               + "Cliente número: " + cliente.getCodigoCliente() + "\n"
+               + "BASE:\t\t\t" + base + "\n"
+               + "TOTAL:\t\t\t\t" + total + "\n";
     }
 }

@@ -1,4 +1,4 @@
-package dam.m03.uf5.grupo8.tpv;
+// package dam.m03.uf5.grupo8.tpv;
 
 /**
  * Clase contenedora que representa a un articulo adquirido por un cliente y
