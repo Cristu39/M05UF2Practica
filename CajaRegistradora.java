@@ -1,6 +1,7 @@
 package dam.m03.uf5.grupo8.tpv;
 
 import java.util.*;
+import java.io.Console;
 
 /**
  * Clase principal de la aplicación que implementa una caja registradora
@@ -15,11 +16,11 @@ public class CajaRegistradora {
     /** almacena los Productos disponibles en la tienda */
     private ListadoProductos listaProductos;
     /** instancia de tipo COLECCION para guardar las compras finalizadas */
-    private COLECCION comprasRealizadas;
+    private List<Compra> comprasRealizadas = new ArrayList<>();
     /** COLECCION de clientes que permita hacer búsquedas a partir del código
      * de cliente
      */
-    private COLECCION clientes;
+    private Map<Integer, Cliente> clientes = new TreeMap<>();
 
     /**
      * Devuelve una nueva instancia, inicializada con los datos proporcionados.
@@ -29,7 +30,11 @@ public class CajaRegistradora {
      * @param nombreEmpresa
      * @param direccion
      */
-    public CajaRegistradora(String cif, String telefono, String nombreEmpresa, String direccion){
+    public CajaRegistradora(String cif, String telefono, String nombreEmpresa, String direccion) {
+        this.cif = cif;
+        this.telefono = telefono;
+        this.nombreEmpresa = nombreEmpresa;
+        this.direccion = direccion;
     }
     /**
      * Método principal que arranca la ejecución de la CajaRegistradora.
@@ -47,7 +52,8 @@ public class CajaRegistradora {
      * Si se elige listar compras, mostrará un resumen de la compras realizadas,
      * una por línea, usando el método de la clase Compra correspondiente.
      */
-    public void inicia(){
+    public void inicia() {
+        Console console = System.console();
     }
 
     /**

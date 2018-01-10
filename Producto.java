@@ -31,6 +31,8 @@ public class Producto {
      */
     public Producto(String codigo, String descripcion, double precioSinIVA
             , int IVA, boolean granel) throws ProductoException {
+        if (!esCodigoCorrecto(codigo))
+            throw new ProductoException("Codigo mal formado");
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precioSinIVA = precioSinIVA;

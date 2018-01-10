@@ -1,7 +1,6 @@
 package dam.m03.uf5.grupo8.tpv;
 
 import java.util.*;
-import dam.m03.uf5.grupo8.tpv.Producto.*;
 
 /** Modelo de datos para almacenar el listado de productos de una tienda, que
  * esconde el soporte utilizado para su almacenamiento.
@@ -13,7 +12,7 @@ public class ListadoProductos {
     /** referencia a una colección usada para almacenar la relación
      * de productos disponibles.
      */
-    private Map<String, Producto> listado = new TreeMap<String, Producto>();
+    private Map<String, Producto> listado = new TreeMap<>();
 
     /** Crea y devuelve una instancia de la clase. Se debe inicializar con unos
      * cuantos productos de prueba como los del enunciado
@@ -38,8 +37,11 @@ public class ListadoProductos {
      * cuál de los dos motivos).
      */
     public Producto getProductoByCodigo(String codigo) throws ProductoException {
-        if (esCodigoCorrecto(codigo)) {
-
-        }
+        if (esCodigoCorrecto(codigo))
+            throw new ProductoException("Codigo mal formado");
+        if (!listado.containsKey(codigo))
+            throw new ProductoException("Producto no encontrado");
+        else
+            return listado.get(codigo);
     }
 }
