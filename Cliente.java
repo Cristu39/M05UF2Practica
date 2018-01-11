@@ -38,9 +38,13 @@ public class Cliente {
         this.nombre = (nombre.matches(alfaAndSpace)) ? nombre:"";
         this.apellidos = (apellidos.matches(alfaAndSpace)) ? apellidos:"";
         this.nif = (nif.matches("^[0-9]{8}[A-Z]$") && nifValido(nif)) ? nif:"";
+        if (this.nombre.isEmpty())
+            throw new IllegalArgumentException("Nombre mal formado");
+        if (this.apellidos.isEmpty())
+            throw new IllegalArgumentException("Apellidos mal formados");
+        if (this.nif.isEmpty())
+            throw new IllegalArgumentException("NIF mal formado");
         codigoCliente = ++numClientes;
-        if (nombre.isEmpty() || apellidos.isEmpty() || nif.isEmpty())
-            throw new IllegalArgumentException("Nombre, apellidos o nif mal formados");
     }
 
     /* Añadir los getters necesarios para cada atributo de un Cliente

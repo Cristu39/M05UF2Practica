@@ -57,7 +57,7 @@ public class Producto {
      * @return el precio del Producto aplicando el IVA
      */
     public double getPrecioConIVA() {
-        return precioSinIVA * IVA / 100;
+        return precioSinIVA * (IVA + 100) / 100;
     }
 
     /**

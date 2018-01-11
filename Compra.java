@@ -65,7 +65,7 @@ public class Compra {
      * @return un String con el formato: "Fecha: la_fecha, Importe (con IVA): el_importe"
      */
     public String resumen() {
-        return String.format("Fecha: %s, Importe (con IVA): %d", getFecha(), getTotal());
+        return String.format("Fecha: %s, Importe (con IVA): %.2f\n", getFecha(), getTotal());
     }
 
     /**
@@ -76,13 +76,17 @@ public class Compra {
     public String generaTicket() {
         String articulos = "";
         for (int i=0; i<cesta.size(); i++)
-            articulos += i + "\t" + cesta.get(i).toString() + "\n";
-        return "---------------------------\n"
-               + "#\tDESCRIPCIÓN\tPESO\tPVP\tTOTAL\n"
-               + articulos
-               + "---------------------------\n"
-               + "Cliente número: " + cliente.getCodigoCliente() + "\n"
-               + "BASE:\t\t\t" + base + "\n"
-               + "TOTAL:\t\t\t\t" + total + "\n";
+            articulos += String.format("%d\t%s\n", i+1, cesta.get(i));
+        return String.format(
+            "%s\n"
+            + "---------------------------\n"
+            + "#\tDESCRIPCIÓN\tPESO\tPVP\tTOTAL\n"
+            + "%s"
+            + "---------------------------\n"
+            + "Cliente número: %s\n"
+            + "BASE:\t\t\t%.2f€\n"
+            + "TOTAL:\t\t\t%.2f€\n"
+            , getFecha(), articulos, cliente.getCodigoCliente(), base, total
+        );
     }
 }

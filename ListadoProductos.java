@@ -38,7 +38,7 @@ public class ListadoProductos {
      * cuál de los dos motivos).
      */
     public Producto getProductoByCodigo(String codigo) throws ProductoException {
-        if (Producto.esCodigoCorrecto(codigo))
+        if (!Producto.esCodigoCorrecto(codigo))
             throw new ProductoException("Codigo mal formado");
         if (!listado.containsKey(codigo))
             throw new ProductoException("Producto no encontrado");

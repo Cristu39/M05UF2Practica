@@ -30,16 +30,21 @@ public class ArticuloCompra {
         this.producto = producto;
         totalConIVA = producto.getPrecioConIVA();
     }
-
     /**
      * Constructor para Productos a granel
      * @param producto el Producto comprado
      * @param peso el peso en Kg
      */
-    public ArticuloCompra(Producto producto, double peso) {
+
+    // He pasado peso a string para poder comprobar con un regex el formato
+    // y lanzar una excepcion si es necesario
+    public ArticuloCompra(Producto producto, String peso) {
         this.producto = producto;
-        this.peso = peso;
-        totalConIVA = producto.getPrecioConIVA() * peso;
+        if (peso.matches("^[0-9]+[\\.,]?[0-9]*$")) {
+            this.peso = Double.parseDouble(peso.replace(",", "."));
+            totalConIVA = producto.getPrecioConIVA() * this.peso;
+        } else
+            throw new NumberFormatException("Peso del producto mal formado");
     }
 
     /**
@@ -57,9 +62,9 @@ public class ArticuloCompra {
      */
     public String toString() {
         if (producto.isGranel())
-            return String.format("%s\t%d\t%d\t%d", producto.getDescripcionCorta()
+            return String.format("%s\t%.2fKg\t%.2f€\t%.2f€", producto.getDescripcionCorta()
                                 , peso, producto.getPrecioConIVA(), totalConIVA);
-        return String.format("%s\t\t%d\t%d", producto.getDescripcionCorta()
+        return String.format("%s\t\t%.2f€\t%.2f€", producto.getDescripcionCorta()
                             , producto.getPrecioConIVA(), totalConIVA);
     }
 }
